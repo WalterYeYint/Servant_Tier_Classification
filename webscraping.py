@@ -2,7 +2,7 @@ from os import closerange
 from bs4 import BeautifulSoup
 import requests
 
-# servant_class = ['Moon_Cancer']
+# servant_class = ['Beast']
 servant_class = ['Saber', 'Archer', 'Lancer', 'Rider', 'Caster', 'Assassin', 'Berserker', 
 				'Ruler', 'Avenger', 'Moon_Cancer', 'Alter_Ego','Foreigner', 'Pretender', 'Beast']
 labels = 'name,min_attack,max_attack,min_HP,max_HP,star_absorption,star_generation,NP_charge_attack,NP_charge_defense,death_rate,strength,endurance,agility,mana,luck,NP'
@@ -22,10 +22,15 @@ def getServantInfo(servant_name):
 		if "ATK:" in td.b or "HP:" in td.b or "Star Absorption" in td.b or "Star Generation" in td.b or "NP Charge ATK" in td.b or "NP Charge DEF" in td.b or "Death Rate" in td.b:
 			if "ATK:" in td.b or "HP:" in td.b:
 				td.span.decompose()
-				left_value, right_value = td.text.replace(' ', '').replace(',', '').replace('\n', '').split("/")
-				servant_info.append(left_value)
-				servant_info.append(right_value)
-				# print(left_value, right_value)
+				if "/" in td.text:
+					left_value, right_value = td.text.replace(' ', '').replace(',', '').replace('\n', '').split("/")
+					servant_info.append(left_value)
+					servant_info.append(right_value)
+					# print(left_value, right_value)
+				else:
+					value = td.text.replace(' ', '').replace(',', '').replace('\n', '')
+					servant_info.append(value)
+					servant_info.append(value)
 			else:
 				td.span.decompose()
 				value = td.text.replace(' ', '').replace(',', '').replace('\n', '')
