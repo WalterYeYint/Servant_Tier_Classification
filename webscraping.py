@@ -54,16 +54,14 @@ for servant_class_name in servant_class:
 		for sl in servant_list:
 			servant_name = sl.a['title'].replace(' ','_')
 			servant_info = getServantInfo(servant_name)
-			for i in servant_info:
-				f.write(i + ',')
-			f.write('\n')
+			servant_info_string = ",".join(servant_info)
+			f.write(servant_info_string + '\n')
 
 		for sl_2 in servant_list_2:
 			servant_name = sl_2.a['title'].replace(' ','_')
 			servant_info = getServantInfo(servant_name)
-			for i in servant_info:
-				f.write(i + ',')
-			f.write('\n')
+			servant_info_string = ",".join(servant_info)
+			f.write(servant_info_string + '\n')
 
 
 
