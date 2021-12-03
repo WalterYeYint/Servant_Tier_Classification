@@ -19,7 +19,8 @@ def getServantInfo(servant_name):
 	closetable_td_s = closetable.find_all('td')
 	# print(closetable_td_s)
 	for td in closetable_td_s:
-		if "ATK:" in td.b or "HP:" in td.b or "Star Absorption" in td.b or "Star Generation" in td.b or "NP Charge ATK" in td.b or "NP Charge DEF" in td.b or "Death Rate" in td.b:
+		# print(td.b)
+		if "ATK:" in td.b or "HP:" in td.b or "Star Absorption:" in td.b or "Star Generation:" in td.b or "NP Charge ATK:" in td.b or "NP Charge DEF:" in td.b or "Death Rate:" in td.b:
 			if "ATK:" in td.b or "HP:" in td.b:
 				td.span.decompose()
 				if "/" in td.text:
